@@ -150,7 +150,7 @@
         .btn-promptpay { display: inline-block; background: #113566; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; font-family: inherit; transition: 0.2s;}
         .btn-promptpay:hover { background: #1e40af; }
         
-        .thai-support-zone { margin-top: 10px; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; display: block !important; /* Force display for Thai zone */}
+        .thai-support-zone { margin-top: 10px; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; display: block !important; }
 
         .feedback-form input, .feedback-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); border-radius: 5px; box-sizing: border-box; font-family: inherit; background: var(--input-bg); color: var(--text-main); }
         .feedback-form button { background: var(--text-muted); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.2s;}
@@ -163,38 +163,41 @@
         .close-modal:hover { color: var(--text-main); }
         .qr-image { max-width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid var(--border-color); }
         
-        /* --- Story Generation CSS --- */
+        /* --- Story Generation CSS (10 Items Version) --- */
         .story-container { 
             width: 1080px; height: 1920px; background: linear-gradient(145deg, #09090b 0%, #0f172a 100%); 
-            color: white; position: absolute; top: -9999px; left: -9999px; padding: 80px 100px; 
+            color: white; position: absolute; top: -9999px; left: -9999px; padding: 60px 80px; 
             box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; overflow: hidden; 
         }
         .story-bg-glow1 { position: absolute; top: -10%; left: -20%; width: 800px; height: 800px; background: rgba(239, 68, 68, 0.4); filter: blur(200px); border-radius: 50%; z-index: 0; }
         .story-bg-glow2 { position: absolute; bottom: -10%; right: -20%; width: 900px; height: 900px; background: rgba(14, 165, 233, 0.3); filter: blur(200px); border-radius: 50%; z-index: 0; }
         .story-content { z-index: 1; position: relative; height: 100%; display: flex; flex-direction: column; }
-        .story-header { text-align: center; margin-bottom: 50px; }
+        .story-header { text-align: center; margin-bottom: 40px; }
         
         .story-title { font-size: 90px; font-weight: 900; color: #ffffff; text-shadow: 0 4px 20px rgba(239, 68, 68, 0.8); margin: 0; letter-spacing: 2px;}
         .story-title span { color: #ff4b4b; }
+        .story-date { font-size: 26px; color: #cbd5e1; margin-top: 15px; font-weight: 500; }
         
-        .story-date { font-size: 30px; color: #cbd5e1; margin-top: 20px; font-weight: 500; }
+        .story-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; }
+        .story-stat-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px; padding: 30px; text-align: center; backdrop-filter: blur(20px); }
+        .story-stat-card.full { grid-column: span 2; padding: 25px;}
+        .story-stat-num { font-size: 75px; font-weight: 900; color: #fff; margin: 0; line-height: 1;}
+        .story-stat-label { font-size: 22px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-top: 10px; font-weight: bold;}
         
-        .story-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
-        .story-stat-card { background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px; padding: 40px; text-align: center; backdrop-filter: blur(20px); }
-        .story-stat-card.full { grid-column: span 2; padding: 30px;}
-        .story-stat-num { font-size: 85px; font-weight: 900; color: #fff; margin: 0; line-height: 1;}
-        .story-stat-label { font-size: 26px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-top: 15px; font-weight: bold;}
-        
-        .story-lists { display: flex; gap: 30px; flex: 1; }
-        .story-list-box { flex: 1; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px; padding: 40px; backdrop-filter: blur(20px); display: flex; flex-direction: column; overflow:hidden;}
-        .story-list-box h2 { font-size: 36px; color: #f8fafc; margin-top: 0; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid rgba(255,255,255,0.08); text-align: center; }
+        .story-lists { display: flex; gap: 20px; flex: 1; }
+        .story-list-box { flex: 1; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 25px; padding: 30px; backdrop-filter: blur(20px); display: flex; flex-direction: column; overflow:hidden;}
+        .story-list-box h2 { font-size: 30px; color: #f8fafc; margin-top: 0; margin-bottom: 25px; padding-bottom: 20px; border-bottom: 2px solid rgba(255,255,255,0.08); text-align: center; }
         .story-list-box h2 span { color: #ef4444; }
         .story-list-box.blue h2 span { color: #38bdf8; }
-        .story-item { font-size: 32px; margin-bottom: 25px; font-weight: 600; display: flex; align-items: center; color: #f1f5f9; }
-        .story-item span.rank { color: #ef4444; font-weight: 900; font-size: 36px; width: 60px; flex-shrink: 0;}
+        
+        .story-item { font-size: 22px; margin-bottom: 18px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 10px;}
+        .story-item-left { display: flex; align-items: center; overflow: hidden;}
+        .story-item span.rank { color: #ef4444; font-weight: 900; font-size: 26px; width: 50px; flex-shrink: 0;}
         .story-list-box.blue .story-item span.rank { color: #38bdf8; }
-        .story-item span.name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
-        .story-footer { text-align: center; font-size: 26px; color: #64748b; margin-top: auto; padding-top: 30px; font-weight: 500;}
+        .story-item span.name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
+        .story-item span.count { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 12px; font-size: 18px; color: #f8fafc; font-weight: bold; flex-shrink:0; margin-left: 10px;}
+        
+        .story-footer { text-align: center; font-size: 24px; color: #64748b; margin-top: auto; padding-top: 20px; font-weight: 500;}
 
         @media (max-width: 600px) {
             body { padding: 10px; }
@@ -316,7 +319,7 @@
             <div class="chart-header">
                 <h3 id="channelTitle">Top Watched Channels</h3>
             </div>
-            <div class="chart-hint" id="channelHint">(Click bar or name to open channel)</div>
+            <div class="chart-hint" id="channelHint">(Click anywhere on the row to open channel)</div>
             
             <div class="chart-box" id="channelCanvasBox"><canvas id="topChannelsChart"></canvas></div>
             
@@ -350,7 +353,7 @@
             </div>
             
             <div id="videoChartView">
-                <div class="chart-hint" id="videoHint">(Click bar or name to open video)</div>
+                <div class="chart-hint" id="videoHint">(Click anywhere on the row to open video)</div>
                 <div class="chart-box" id="videoCanvasBox"><canvas id="topVideosChart"></canvas></div>
             </div>
 
@@ -509,8 +512,8 @@
             perPageText: "Items per page:",
             chartChannelTitle: "Top Watched Channels",
             chartVideoTitle: "Video History",
-            hintChannel: "(Click bar or name to open channel)",
-            hintVideo: "(Click bar or name to open video)",
+            hintChannel: "(Click anywhere on the row to open channel)",
+            hintVideo: "(Click anywhere on the row to open video)",
             rankText: "Rank",
             prev: "« Prev",
             next: "Next »",
@@ -522,7 +525,6 @@
             thCommentVideo: "Video Link",
             thCommentText: "Your Comment",
             noCommentText: "No comments data yet. Please upload .csv file.",
-            noLinkMsg: "No original video link found.",
             timeRangePre: "📅 Tracking since:",
             timeRangeMid: "to",
             sortCount: "🔥 Most Viewed",
@@ -568,8 +570,8 @@
             perPageText: "แสดงผลหน้าละ:",
             chartChannelTitle: "ช่องที่ดูบ่อยที่สุด",
             chartVideoTitle: "ประวัติวิดีโอ",
-            hintChannel: "(คลิกที่แท่งกราฟ หรือ ชื่อช่อง เพื่อเปิดลิงก์)",
-            hintVideo: "(คลิกที่แท่งกราฟ หรือ ชื่อคลิป เพื่อเปิดลิงก์)",
+            hintChannel: "(คลิกแถวไหนก็ได้ เพื่อเปิดลิงก์ช่อง)",
+            hintVideo: "(คลิกแถวไหนก็ได้ เพื่อเปิดลิงก์คลิป)",
             rankText: "อันดับ",
             prev: "« ก่อนหน้า",
             next: "ถัดไป »",
@@ -581,7 +583,6 @@
             thCommentVideo: "วิดีโอ (Video Link)",
             thCommentText: "ความคิดเห็นของคุณ (Your Comment)",
             noCommentText: "ยังไม่มีข้อมูลความคิดเห็น โปรดอัปโหลดไฟล์ความคิดเห็น (.csv)",
-            noLinkMsg: "ไม่พบลิงก์วิดีโอต้นฉบับในไฟล์ประวัตินี้",
             timeRangePre: "📅 เริ่มเก็บประวัติเมื่อ:",
             timeRangeMid: "ถึง",
             sortCount: "🔥 ดูบ่อยที่สุด",
@@ -627,8 +628,8 @@
             perPageText: "每页显示：",
             chartChannelTitle: "最常观看频道",
             chartVideoTitle: "视频历史",
-            hintChannel: "(点击柱状图或名称打开频道)",
-            hintVideo: "(点击柱状图或名称打开视频)",
+            hintChannel: "(点击此行任意位置打开频道)",
+            hintVideo: "(点击此行任意位置打开视频)",
             rankText: "排名",
             prev: "« 上一页",
             next: "下一页 »",
@@ -640,7 +641,6 @@
             thCommentVideo: "视频链接",
             thCommentText: "你的评论",
             noCommentText: "暂无评论数据，请上传 .csv 文件。",
-            noLinkMsg: "未找到原始视频链接。",
             timeRangePre: "📅 记录始于：",
             timeRangeMid: "至",
             sortCount: "🔥 最多观看",
@@ -686,8 +686,8 @@
             perPageText: "表示数:",
             chartChannelTitle: "よく見るチャンネル",
             chartVideoTitle: "動画の履歴",
-            hintChannel: "(バーまたは名前をクリックしてチャンネルを開く)",
-            hintVideo: "(バーまたは名前をクリックして動画を開く)",
+            hintChannel: "(行のどこかをクリックしてチャンネルを開く)",
+            hintVideo: "(行のどこかをクリックして動画を開く)",
             rankText: "ランク",
             prev: "« 前へ",
             next: "次へ »",
@@ -699,7 +699,6 @@
             thCommentVideo: "動画リンク",
             thCommentText: "あなたのコメント",
             noCommentText: "コメントデータがありません。",
-            noLinkMsg: "元の動画リンクが見つかりません。",
             timeRangePre: "📅 記録開始:",
             timeRangeMid: "から",
             sortCount: "🔥 最多視聴",
@@ -710,7 +709,7 @@
             thVidViews: "視聴回数",
             thVidDate: "視聴日",
             supportTitle: "☕ 開発者を支援",
-            supportDesc: "役立った場合は、コーヒーをおごってください！",
+            supportDesc: "役立った場合は、猫の餌代をお願いします！",
             supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 フィードバック",
             feedbackDesc: "アイデアやバグを見つけましたか？メッセージを送ってください。",
@@ -745,8 +744,8 @@
             perPageText: "Elementos:",
             chartChannelTitle: "Canales Más Vistos",
             chartVideoTitle: "Historial de Videos",
-            hintChannel: "(Haz clic en la barra o nombre para abrir)",
-            hintVideo: "(Haz clic en la barra o nombre para abrir)",
+            hintChannel: "(Haz clic en cualquier parte de la fila para abrir)",
+            hintVideo: "(Haz clic en cualquier parte de la fila para abrir)",
             rankText: "Rango",
             prev: "« Anterior",
             next: "Siguiente »",
@@ -758,7 +757,6 @@
             thCommentVideo: "Enlace del Video",
             thCommentText: "Tu Comentario",
             noCommentText: "Aún no hay datos. Por favor sube un archivo .csv.",
-            noLinkMsg: "No se encontró el enlace original.",
             timeRangePre: "📅 Seguimiento desde:",
             timeRangeMid: "hasta",
             sortCount: "🔥 Más Visto",
@@ -769,7 +767,7 @@
             thVidViews: "Vistas",
             thVidDate: "Fecha",
             supportTitle: "☕ Apoya al Desarrollador",
-            supportDesc: "¡Si esto te fue útil, invítame un café!",
+            supportDesc: "¡Si esto te fue útil, considera comprarme comida para gatos!",
             supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 Comentarios",
             feedbackDesc: "¿Tienes una idea o encontraste un error? Envíame un mensaje.",
@@ -852,7 +850,6 @@
             document.getElementById('modalDescText').innerText = "Scan with any Thai mobile banking app";
         }
         
-        // Show/Hide Thai Zone based on language setup
         document.getElementById('thaiSupportZone').style.display = d.showPromptPay ? 'block' : 'none';
         
         document.querySelectorAll('.trans-prev').forEach(el => el.innerText = d.prev);
@@ -916,7 +913,6 @@
         globalOldestDate = null; globalNewestDate = null;
         let hasHistory = false, hasComments = false;
 
-        // Process .json files first
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             if (file.name.includes('.json')) {
@@ -925,7 +921,6 @@
             }
         }
         
-        // Process .csv / .html files next
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const text = await file.text();
@@ -1062,19 +1057,12 @@
     const handleChartClick = (e, elements, chart, dataSlice) => {
         let index = -1;
         
-        // 1. ตรวจสอบการกดบนตัวแท่งกราฟโดยตรง
-        const barElements = chart.getElementsAtEventForMode(e, 'index', { intersect: true }, false);
-        if (barElements.length > 0) { 
-            index = barElements[0].index; 
-        } 
-        // 2. ตรวจสอบการกดบนชื่อแกน Y (ใช้ Math.round ช่วยล็อคเป้าให้แม่นยำ)
-        else if (chart.scales.y) {
-            const yAxis = chart.scales.y;
-            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) {
-                index = Math.round(yAxis.getValueForPixel(e.y));
-            }
+        // Scan horizontally using getElementsAtEventForMode to catch any click on that row
+        const rowElements = chart.getElementsAtEventForMode(e, 'y', { intersect: false }, false);
+        if (rowElements.length > 0) {
+            index = rowElements[0].index;
         }
-        
+
         if (index >= 0 && index < dataSlice.length) {
             let url = dataSlice[index][1].url;
             if (!url && dataSlice[index][0].startsWith("Video ID: ")) {
@@ -1087,12 +1075,8 @@
     };
     
     const handleChartHover = (e, elements, chart) => {
-        let isPointer = elements.length > 0;
-        if (!isPointer && chart.scales.y) {
-            const yAxis = chart.scales.y;
-            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) isPointer = true;
-        }
-        e.native.target.style.cursor = isPointer ? 'pointer' : 'default';
+        const rowElements = chart.getElementsAtEventForMode(e, 'y', { intersect: false }, false);
+        e.native.target.style.cursor = rowElements.length > 0 ? 'pointer' : 'default';
     };
 
     function setChannelItems(limit, btnElement) {
@@ -1126,7 +1110,7 @@
         const ctx = document.getElementById('topChannelsChart').getContext('2d');
         const isDark = document.body.classList.contains('dark');
         
-        let maxLen = window.innerWidth < 600 ? 25 : 40;
+        let maxLen = window.innerWidth < 600 ? 15 : 40;
 
         chart1 = new Chart(ctx, {
             type: 'bar', 
@@ -1136,7 +1120,7 @@
             },
             options: { 
                 indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: 40 } }, 
+                layout: { padding: { right: window.innerWidth < 600 ? 30 : 50 } }, 
                 scales: { 
                     x: { beginAtZero: true, suggestedMax: globalMaxChannels, ticks: { stepSize: 1 } },
                     y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
@@ -1182,7 +1166,7 @@
         const ctx = document.getElementById('topVideosChart').getContext('2d');
         const isDark = document.body.classList.contains('dark');
         
-        let maxLen = window.innerWidth < 600 ? 25 : 45;
+        let maxLen = window.innerWidth < 600 ? 15 : 45;
 
         chart2 = new Chart(ctx, {
             type: 'bar', 
@@ -1192,7 +1176,7 @@
             },
             options: { 
                 indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: 40 } },
+                layout: { padding: { right: window.innerWidth < 600 ? 30 : 50 } },
                 scales: { 
                     x: { beginAtZero: true, suggestedMax: globalMaxVideos, ticks: { stepSize: 1 } },
                     y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
@@ -1296,7 +1280,7 @@
                 let vidId = extractVideoID(url);
                 if(vidId) {
                     if (urlToTitleMap[vidId]) { title = urlToTitleMap[vidId]; } 
-                    else { title = "Video ID: " + vidId; } // Removed (Not in History)
+                    else { title = "Video ID: " + vidId; } 
                 } 
             } else { url = ""; title = "Unknown Video"; }
             
@@ -1317,7 +1301,7 @@
                 let vidId = extractVideoID(videoUrl);
                 if(vidId) {
                     if(urlToTitleMap[vidId]) videoTitle = urlToTitleMap[vidId];
-                    else videoTitle = "Video ID: " + vidId; // Removed (Not in History)
+                    else videoTitle = "Video ID: " + vidId; 
                 }
                 
                 let textContext = li.innerText, commentText = "-";
@@ -1351,11 +1335,9 @@
         const dataSlice = allComments.slice(start, start + itemsPerCommentPage);
         const tbody = document.getElementById('commentsTableBody');
         tbody.innerHTML = '';
-        const d = dict[currentLang];
 
         dataSlice.forEach(item => {
             const tr = document.createElement('tr');
-            
             const linkHTML = (item.url && item.url !== "null") 
                 ? `<a href="${item.url}" target="_blank" class="video-link">${item.title}</a>`
                 : `<span class="video-link" style="color:var(--text-muted); cursor:not-allowed;">${item.title}</span>`;
@@ -1365,6 +1347,7 @@
         });
     }
 
+    // --- Story Generator Logic (10 Items Edition) ---
     function generateStory() {
         if(totalViewsAccumulated === 0) return;
         
@@ -1376,15 +1359,29 @@
         document.getElementById('stChannels').innerText = allSortedChannels.length.toLocaleString();
         
         let cHTML = '';
-        for(let i=0; i<Math.min(5, allSortedChannels.length); i++){
-            cHTML += `<div class="story-item"><span class="rank">#${i+1}</span> <span class="name">${allSortedChannels[i][0]}</span></div>`;
+        for(let i=0; i<Math.min(10, allSortedChannels.length); i++){
+            cHTML += `
+            <div class="story-item">
+                <div class="story-item-left">
+                    <span class="rank">#${i+1}</span> 
+                    <span class="name">${allSortedChannels[i][0]}</span>
+                </div>
+                <span class="count">${allSortedChannels[i][1].count.toLocaleString()}</span>
+            </div>`;
         }
         document.getElementById('stChannelsList').innerHTML = cHTML;
         
         let vHTML = '';
         let countSorted = [...originalAllVideos].sort((a, b) => b[1].count - a[1].count);
-        for(let i=0; i<Math.min(5, countSorted.length); i++){
-            vHTML += `<div class="story-item"><span class="rank">#${i+1}</span> <span class="name">${countSorted[i][0]}</span></div>`;
+        for(let i=0; i<Math.min(10, countSorted.length); i++){
+            vHTML += `
+            <div class="story-item">
+                <div class="story-item-left">
+                    <span class="rank">#${i+1}</span> 
+                    <span class="name">${countSorted[i][0]}</span>
+                </div>
+                <span class="count">${countSorted[i][1].count.toLocaleString()}</span>
+            </div>`;
         }
         document.getElementById('stVideosList').innerHTML = vHTML;
 
