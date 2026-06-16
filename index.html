@@ -8,6 +8,7 @@
     <meta property="og:title" content="YouTube History Tracker">
     <meta property="og:description" content="Visualize your YouTube Watch History securely. 100% run in your browser.">
     
+    <!-- Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
@@ -121,7 +122,7 @@
         .toolbar select { padding: 6px 10px; border-radius: 6px; border: 1px solid var(--border-color); outline: none; cursor: pointer; background: var(--input-bg); color: var(--text-main); }
         .toolbar .icon-btn { background: var(--input-bg); border: 1px solid var(--border-color); padding: 6px 10px; border-radius: 6px; cursor: pointer; color: var(--text-main); }
         .toolbar .icon-btn.active { background: var(--btn-hover); border-color: var(--text-muted); }
-        .chart-box { position: relative; width: 100%; border-radius: 6px; padding: 10px 0; }
+        .chart-box { position: relative; width: 100%; border-radius: 6px; padding: 10px 0; overflow: hidden; }
         .chart-hint { text-align: center; font-size: 12px; color: var(--text-muted); margin-bottom: 15px; }
 
         .data-container { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; display: none; transition: 0.3s; }
@@ -163,7 +164,7 @@
         .close-modal:hover { color: var(--text-main); }
         .qr-image { max-width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid var(--border-color); }
         
-        /* --- Story Generation CSS (10 Items Version) --- */
+        /* --- Story Generation CSS (Fixed Layout) --- */
         .story-container { 
             width: 1080px; height: 1920px; background: linear-gradient(145deg, #09090b 0%, #0f172a 100%); 
             color: white; position: absolute; top: -9999px; left: -9999px; padding: 60px 80px; 
@@ -190,12 +191,13 @@
         .story-list-box h2 span { color: #ef4444; }
         .story-list-box.blue h2 span { color: #38bdf8; }
         
-        .story-item { font-size: 22px; margin-bottom: 18px; font-weight: 600; display: flex; align-items: center; justify-content: space-between; color: #f1f5f9; border-bottom: 1px solid rgba(255,255,255,0.03); padding-bottom: 10px;}
-        .story-item-left { display: flex; align-items: center; overflow: hidden;}
-        .story-item span.rank { color: #ef4444; font-weight: 900; font-size: 26px; width: 50px; flex-shrink: 0;}
+        /* Flexbox for perfect alignment in Story */
+        .story-item { display: flex; align-items: center; justify-content: space-between; background: rgba(255,255,255,0.03); padding: 12px 20px; border-radius: 15px; margin-bottom: 12px; }
+        .story-item-left { display: flex; align-items: center; width: 75%; overflow: hidden; }
+        .story-item span.rank { color: #ef4444; font-weight: 900; font-size: 28px; width: 50px; flex-shrink: 0;}
         .story-list-box.blue .story-item span.rank { color: #38bdf8; }
-        .story-item span.name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 260px; }
-        .story-item span.count { background: rgba(255,255,255,0.1); padding: 4px 10px; border-radius: 12px; font-size: 18px; color: #f8fafc; font-weight: bold; flex-shrink:0; margin-left: 10px;}
+        .story-item span.name { font-size: 24px; font-weight: bold; color: #f1f5f9; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .story-item span.count { font-size: 20px; font-weight: bold; color: #f8fafc; background: rgba(255,255,255,0.15); padding: 5px 15px; border-radius: 20px; flex-shrink: 0; margin-left: 10px;}
         
         .story-footer { text-align: center; font-size: 24px; color: #64748b; margin-top: auto; padding-top: 20px; font-weight: 500;}
 
@@ -210,11 +212,13 @@
             
             .data-table th, .data-table td { font-size: 13px; padding: 8px 10px; }
             .video-link { word-break: break-word; display: block; max-width: 250px; white-space: normal; }
+            .chart-hint { font-size: 11px; }
         }
     </style>
 </head>
 <body>
 
+<!-- Hidden Story Element for Export -->
 <div id="storyMaker" class="story-container">
     <div class="story-bg-glow1"></div>
     <div class="story-bg-glow2"></div>
@@ -308,6 +312,7 @@
         <button class="tab-btn" id="tabCommBtn" onclick="switchTab('comments')">💬 My Comments</button>
     </div>
 
+    <!-- History Tab -->
     <div id="historyTab" class="tab-content active">
         <div class="stats-grid" id="statsGrid" style="display:none;">
             <div class="stat-card"><h3 id="statTotalText">Total Views</h3><h2 id="totalViews">0</h2></div>
@@ -315,11 +320,12 @@
             <div class="stat-card"><h3 id="statVideoText">Unique Videos</h3><h2 id="uniqueVideos">0</h2></div>
         </div>
 
+        <!-- Channels Section -->
         <div class="chart-wrapper" id="channelChartContainer" style="display:none;">
             <div class="chart-header">
                 <h3 id="channelTitle">Top Watched Channels</h3>
             </div>
-            <div class="chart-hint" id="channelHint">(Click anywhere on the row to open channel)</div>
+            <div class="chart-hint" id="channelHint">(Click on the bar to go direct to channel in new tab)</div>
             
             <div class="chart-box" id="channelCanvasBox"><canvas id="topChannelsChart"></canvas></div>
             
@@ -338,6 +344,7 @@
             </div>
         </div>
         
+        <!-- Videos Section -->
         <div class="chart-wrapper" id="videoChartContainer" style="display:none;">
             <div class="chart-header">
                 <h3 id="videoTitle">Video History</h3>
@@ -353,7 +360,7 @@
             </div>
             
             <div id="videoChartView">
-                <div class="chart-hint" id="videoHint">(Click anywhere on the row to open video)</div>
+                <div class="chart-hint" id="videoHint">(Click on the bar to go direct to video in new tab)</div>
                 <div class="chart-box" id="videoCanvasBox"><canvas id="topVideosChart"></canvas></div>
             </div>
 
@@ -380,6 +387,7 @@
         </div>
     </div>
 
+    <!-- Comments Tab -->
     <div id="commentsTab" class="tab-content">
         <div class="data-container" style="display:block;">
             <table class="data-table">
@@ -398,6 +406,7 @@
         </div>
     </div>
 
+    <!-- Footer: Support & Feedback Section -->
     <div class="footer-section">
         <div class="support-box">
             <h3 id="supportTitle">☕ Support the Developer</h3>
@@ -430,6 +439,7 @@
     </div>
 </div>
 
+<!-- Modal: PromptPay -->
 <div class="modal-overlay" id="qrModal" onclick="closePromptPay(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-modal" onclick="closePromptPay(true)">&times;</button>
@@ -439,6 +449,7 @@
     </div>
 </div>
 
+<!-- Modal: Story Share -->
 <div class="modal-overlay" id="storyModal" onclick="closeStory(event)">
     <div class="modal-content" style="width: auto; background: transparent; box-shadow: none;" onclick="event.stopPropagation()">
         <button class="close-modal" style="color:white; right: 0; top: -30px;" onclick="closeStory(true)">&times;</button>
@@ -449,6 +460,7 @@
     </div>
 </div>
 
+<!-- Formspree Scripts -->
 <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#feedback-form', formId: 'xkoaeove' });
@@ -512,8 +524,8 @@
             perPageText: "Items per page:",
             chartChannelTitle: "Top Watched Channels",
             chartVideoTitle: "Video History",
-            hintChannel: "(Click anywhere on the row to open channel)",
-            hintVideo: "(Click anywhere on the row to open video)",
+            hintChannel: "(Click on the bar to go direct to channel in new tab)",
+            hintVideo: "(Click on the bar to go direct to video in new tab)",
             rankText: "Rank",
             prev: "« Prev",
             next: "Next »",
@@ -570,8 +582,8 @@
             perPageText: "แสดงผลหน้าละ:",
             chartChannelTitle: "ช่องที่ดูบ่อยที่สุด",
             chartVideoTitle: "ประวัติวิดีโอ",
-            hintChannel: "(คลิกแถวไหนก็ได้ เพื่อเปิดลิงก์ช่อง)",
-            hintVideo: "(คลิกแถวไหนก็ได้ เพื่อเปิดลิงก์คลิป)",
+            hintChannel: "(คลิกที่แท่งกราฟ เพื่อเปิดลิงก์ช่องในแท็บใหม่)",
+            hintVideo: "(คลิกที่แท่งกราฟ เพื่อเปิดลิงก์คลิปในแท็บใหม่)",
             rankText: "อันดับ",
             prev: "« ก่อนหน้า",
             next: "ถัดไป »",
@@ -628,8 +640,8 @@
             perPageText: "每页显示：",
             chartChannelTitle: "最常观看频道",
             chartVideoTitle: "视频历史",
-            hintChannel: "(点击此行任意位置打开频道)",
-            hintVideo: "(点击此行任意位置打开视频)",
+            hintChannel: "(Click on the bar to go direct to channel in new tab)",
+            hintVideo: "(Click on the bar to go direct to video in new tab)",
             rankText: "排名",
             prev: "« 上一页",
             next: "下一页 »",
@@ -686,8 +698,8 @@
             perPageText: "表示数:",
             chartChannelTitle: "よく見るチャンネル",
             chartVideoTitle: "動画の履歴",
-            hintChannel: "(行のどこかをクリックしてチャンネルを開く)",
-            hintVideo: "(行のどこかをクリックして動画を開く)",
+            hintChannel: "(Click on the bar to go direct to channel in new tab)",
+            hintVideo: "(Click on the bar to go direct to video in new tab)",
             rankText: "ランク",
             prev: "« 前へ",
             next: "次へ »",
@@ -744,8 +756,8 @@
             perPageText: "Elementos:",
             chartChannelTitle: "Canales Más Vistos",
             chartVideoTitle: "Historial de Videos",
-            hintChannel: "(Haz clic en cualquier parte de la fila para abrir)",
-            hintVideo: "(Haz clic en cualquier parte de la fila para abrir)",
+            hintChannel: "(Click on the bar to go direct to channel in new tab)",
+            hintVideo: "(Click on the bar to go direct to video en new tab)",
             rankText: "Rango",
             prev: "« Anterior",
             next: "Siguiente »",
@@ -913,19 +925,46 @@
         globalOldestDate = null; globalNewestDate = null;
         let hasHistory = false, hasComments = false;
 
+        // Pass 1: สร้าง Dictionary แผนที่ URL -> Title
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             if (file.name.includes('.json')) {
                 const text = await file.text();
-                try { const data = JSON.parse(text); if (Array.isArray(data)) { processHistoryData(data); hasHistory = true; } } catch (e) {}
+                try { 
+                    const data = JSON.parse(text); 
+                    if (Array.isArray(data)) { 
+                        data.forEach(item => {
+                            if(!item) return;
+                            let rawTitle = item.title || "";
+                            let clean = rawTitle.replace(/^(ดู |Watched |Assistido |Regardé |Gesehen |Visto |視聴した動画: )/i, '').replace(/^"|"$/g, '').trim();
+                            let vUrl = item.titleUrl || null;
+                            let vidId = extractVideoID(vUrl);
+                            if (!vidId) vidId = extractVideoID(clean); 
+                            if (vidId && clean && !clean.startsWith("http")) {
+                                urlToTitleMap[vidId] = clean;
+                            }
+                        });
+                        hasHistory = true; 
+                    } 
+                } catch (e) {}
             }
         }
         
+        // Pass 2: อ่าน Comments
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const text = await file.text();
             if (file.name.includes('.csv')) { processCommentsCSV(text); hasComments = true; }
             else if (file.name.includes('.html')) { processCommentsHTML(text); hasComments = true; }
+        }
+
+        // Pass 3: ดึงข้อมูล History ไปแสดงผลจริงๆ
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (file.name.includes('.json')) {
+                const text = await file.text();
+                try { const data = JSON.parse(text); if (Array.isArray(data)) processHistoryData(data); } catch (e) {}
+            }
         }
 
         if (hasHistory) finalizeHistoryData();
@@ -958,17 +997,19 @@
             let rawTitle = (item.title && typeof item.title === 'string') ? item.title : "Unknown Video";
             let cleanTitle = rawTitle.replace(prefixRegex, '').trim(); 
             let vUrl = item.titleUrl || null;
-            
-            if (cleanTitle.startsWith("http")) {
-                if (!vUrl || vUrl === "null") vUrl = cleanTitle; 
-                let extId = extractVideoID(cleanTitle);
-                cleanTitle = extId ? "Video ID: " + extId : cleanTitle;
+            let vidId = extractVideoID(vUrl) || extractVideoID(cleanTitle);
+
+            // แปลง URL ที่ติดมาเป็นชื่อ ให้กลับไปเป็นชื่อคลิปจริงๆ 
+            if (vidId && urlToTitleMap[vidId]) {
+                cleanTitle = urlToTitleMap[vidId];
+            } else if (cleanTitle.startsWith("http") && vidId) {
+                cleanTitle = "Video ID: " + vidId;
+            } else if (cleanTitle.startsWith("http")) {
+                cleanTitle = "Unknown Video";
             }
+            
             cleanTitle = cleanTitle.replace(/^"|"$/g, '').trim();
             if (vUrl === "null") vUrl = null;
-
-            let vidId = extractVideoID(vUrl);
-            if (vidId) urlToTitleMap[vidId] = cleanTitle;
 
             let itemDate = item.time ? new Date(item.time) : null;
             if (itemDate && !isNaN(itemDate.getTime())) {
@@ -1053,30 +1094,24 @@
         updateVideoDisplay();
     }
 
-    // --- Hard Fix: Accurate Chart Click ---
+    // --- Hard Fix: ล็อกเป้าการคลิกเฉพาะแท่งกราฟเท่านั้น ---
     const handleChartClick = (e, elements, chart, dataSlice) => {
-        let index = -1;
-        
-        // Scan horizontally using getElementsAtEventForMode to catch any click on that row
-        const rowElements = chart.getElementsAtEventForMode(e, 'y', { intersect: false }, false);
-        if (rowElements.length > 0) {
-            index = rowElements[0].index;
-        }
-
-        if (index >= 0 && index < dataSlice.length) {
-            let url = dataSlice[index][1].url;
-            if (!url && dataSlice[index][0].startsWith("Video ID: ")) {
-                url = "https://www.youtube.com/watch?v=" + dataSlice[index][0].replace("Video ID: ", "");
-            }
-            if(url && url !== "null") {
-                window.open(url, '_blank');
+        if (elements.length > 0) { 
+            const index = elements[0].index;
+            if (index >= 0 && index < dataSlice.length) {
+                let url = dataSlice[index][1].url;
+                if (!url && dataSlice[index][0].startsWith("Video ID: ")) {
+                    url = "https://www.youtube.com/watch?v=" + dataSlice[index][0].replace("Video ID: ", "");
+                }
+                if(url && url !== "null") {
+                    window.open(url, '_blank');
+                }
             }
         }
     };
     
     const handleChartHover = (e, elements, chart) => {
-        const rowElements = chart.getElementsAtEventForMode(e, 'y', { intersect: false }, false);
-        e.native.target.style.cursor = rowElements.length > 0 ? 'pointer' : 'default';
+        e.native.target.style.cursor = elements.length > 0 ? 'pointer' : 'default';
     };
 
     function setChannelItems(limit, btnElement) {
@@ -1110,7 +1145,7 @@
         const ctx = document.getElementById('topChannelsChart').getContext('2d');
         const isDark = document.body.classList.contains('dark');
         
-        let maxLen = window.innerWidth < 600 ? 15 : 40;
+        let maxLen = window.innerWidth < 600 ? 15 : 40; // หั่นชื่อกันตกขอบในมือถือ
 
         chart1 = new Chart(ctx, {
             type: 'bar', 
@@ -1120,10 +1155,10 @@
             },
             options: { 
                 indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: window.innerWidth < 600 ? 30 : 50 } }, 
+                layout: { padding: { left: 0, right: window.innerWidth < 600 ? 30 : 50 } }, 
                 scales: { 
                     x: { beginAtZero: true, suggestedMax: globalMaxChannels, ticks: { stepSize: 1 } },
-                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
+                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } } // ชิดซ้ายเสมอ
                 }, 
                 plugins: { 
                     legend: { display: false },
@@ -1166,7 +1201,7 @@
         const ctx = document.getElementById('topVideosChart').getContext('2d');
         const isDark = document.body.classList.contains('dark');
         
-        let maxLen = window.innerWidth < 600 ? 15 : 45;
+        let maxLen = window.innerWidth < 600 ? 15 : 45; // หั่นชื่อกันตกขอบ
 
         chart2 = new Chart(ctx, {
             type: 'bar', 
@@ -1176,10 +1211,10 @@
             },
             options: { 
                 indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: window.innerWidth < 600 ? 30 : 50 } },
+                layout: { padding: { left: 0, right: window.innerWidth < 600 ? 30 : 50 } },
                 scales: { 
                     x: { beginAtZero: true, suggestedMax: globalMaxVideos, ticks: { stepSize: 1 } },
-                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
+                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } } // ชิดซ้ายเสมอ
                 }, 
                 plugins: { 
                     legend: { display: false },
@@ -1338,16 +1373,23 @@
 
         dataSlice.forEach(item => {
             const tr = document.createElement('tr');
+            
+            // Hard fix: Show "(Not in History)" only once beautifully if title is just a Video ID
+            let displayTitle = item.title;
+            if (displayTitle.startsWith("Video ID:")) {
+                displayTitle = `${displayTitle} <span style="font-size:11px; color:var(--text-muted); font-weight:normal;">(Not in History)</span>`;
+            }
+
             const linkHTML = (item.url && item.url !== "null") 
-                ? `<a href="${item.url}" target="_blank" class="video-link">${item.title}</a>`
-                : `<span class="video-link" style="color:var(--text-muted); cursor:not-allowed;">${item.title}</span>`;
+                ? `<a href="${item.url}" target="_blank" class="video-link">${displayTitle}</a>`
+                : `<span class="video-link" style="color:var(--text-muted); cursor:not-allowed;">${displayTitle}</span>`;
             
             tr.innerHTML = `<td style="width: 30%;">${linkHTML}</td><td style="width: 70%;" class="comment-text">${item.text}</td>`;
             tbody.appendChild(tr);
         });
     }
 
-    // --- Story Generator Logic (10 Items Edition) ---
+    // --- Story Generator Logic ---
     function generateStory() {
         if(totalViewsAccumulated === 0) return;
         
