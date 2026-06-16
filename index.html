@@ -110,8 +110,9 @@
         .stat-card h3 { margin: 0; font-size: 14px; color: var(--text-muted); text-transform: uppercase; }
         .stat-card h2 { margin: 10px 0 0 0; font-size: clamp(24px, 5vw, 32px); color: var(--text-main); }
         
-        .controls { text-align: center; margin-bottom: 20px; }
-        .btn { background-color: var(--btn-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 8px 16px; margin: 5px; border-radius: 20px; cursor: pointer; font-size: 14px; transition: all 0.2s; }
+        .controls-inline { display: flex; justify-content: center; align-items: center; gap: 8px; margin-top: 15px; padding-top: 10px; border-top: 1px dashed var(--border-color); flex-wrap: wrap;}
+        .controls-inline span { font-size: 13px; color: var(--text-muted); font-weight: bold;}
+        .btn { background-color: var(--btn-bg); border: 1px solid var(--border-color); color: var(--text-main); padding: 6px 12px; margin: 2px; border-radius: 20px; cursor: pointer; font-size: 12px; transition: all 0.2s; font-weight: bold;}
         .btn.active { background-color: var(--chart-color1); color: white; border-color: var(--chart-color1); }
 
         .chart-wrapper { margin-bottom: 40px; border: 1px solid var(--border-color); border-radius: 8px; padding: 15px; background: var(--card-bg); transition: 0.3s; }
@@ -126,9 +127,9 @@
         .data-container { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; overflow-x: auto; display: none; transition: 0.3s; }
         .data-table { width: 100%; border-collapse: collapse; text-align: left; font-size: 14px; min-width: 500px; }
         .data-table th { background: var(--table-header); padding: 12px 15px; border-bottom: 2px solid var(--border-color); color: var(--text-main); white-space: nowrap; font-weight: bold;}
-        .data-table td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); vertical-align: top; color: var(--text-main);}
+        .data-table td { padding: 12px 15px; border-bottom: 1px solid var(--border-color); vertical-align: top; color: var(--text-main); word-break: break-word;}
         .data-table tr:hover { background: var(--table-row-hover); }
-        .video-link { color: var(--link-color); text-decoration: none; font-weight: bold; }
+        .video-link { color: var(--link-color); text-decoration: none; font-weight: bold; word-break: break-word; }
         .video-link:hover { text-decoration: underline; color: var(--link-hover); }
         .badge { background: var(--btn-bg); padding: 4px 8px; border-radius: 12px; font-size: 12px; color: var(--text-main); font-weight: bold; border: 1px solid var(--border-color); display: inline-block; white-space: nowrap; margin-bottom: 2px;}
         .comment-text { color: var(--text-muted); line-height: 1.5; white-space: pre-wrap; word-break: break-word; }
@@ -136,18 +137,21 @@
         .pagination { display: flex; justify-content: center; align-items: center; margin-top: 15px; gap: 10px; padding: 10px; flex-wrap: wrap; }
         .page-btn { padding: 6px 12px; border: 1px solid var(--border-color); background: var(--btn-bg); color: var(--text-main); cursor: pointer; border-radius: 5px; font-weight: bold; font-size: 13px; }
         .page-btn:disabled { background: var(--bg-main); color: var(--text-muted); cursor: not-allowed; opacity: 0.5; border-color: var(--border-color);}
+        .page-btn:not(:disabled):hover { background: var(--btn-hover); }
         .page-input { width: 45px; padding: 6px; text-align: center; border: 1px solid var(--border-color); border-radius: 5px; font-weight: bold; font-size: 13px; background: var(--input-bg); color: var(--text-main); }
 
         .footer-section { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color); display: flex; flex-wrap: wrap; gap: 30px; justify-content: space-between; }
         .support-box, .feedback-box { flex: 1 1 300px; background: var(--upload-bg); padding: 20px; border-radius: 8px; border: 1px solid var(--border-color); }
         .support-box h3, .feedback-box h3 { margin-top: 0; color: var(--text-main); }
         
-        .donation-buttons { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 15px; }
+        .donation-buttons { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; margin-top: 15px; width: 100%;}
         .btn-donate { display: inline-block; background: #FFDD00; color: #000; padding: 10px 20px; text-decoration: none; border-radius: 8px; font-weight: bold; transition: 0.2s; border: 1px solid #eab308; }
         .btn-donate:hover { background: #facc15; }
-        .btn-promptpay { display: inline-block; background: #113566; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 16px; font-family: inherit; transition: 0.2s;}
+        .btn-promptpay { display: inline-block; background: #113566; color: #fff; padding: 10px 20px; border-radius: 8px; font-weight: bold; cursor: pointer; border: none; font-size: 14px; font-family: inherit; transition: 0.2s;}
         .btn-promptpay:hover { background: #1e40af; }
         
+        .thai-support-zone { margin-top: 10px; padding-top: 15px; border-top: 1px dashed var(--border-color); width: 100%; display: block !important; /* Force display for Thai zone */}
+
         .feedback-form input, .feedback-form textarea { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid var(--border-color); border-radius: 5px; box-sizing: border-box; font-family: inherit; background: var(--input-bg); color: var(--text-main); }
         .feedback-form button { background: var(--text-muted); color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold; transition: 0.2s;}
         .feedback-form button:hover { opacity: 0.9; }
@@ -159,28 +163,20 @@
         .close-modal:hover { color: var(--text-main); }
         .qr-image { max-width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid var(--border-color); }
         
-        /* --- Story Generation CSS (Minimal & Premium) --- */
+        /* --- Story Generation CSS --- */
         .story-container { 
-            width: 1080px; 
-            height: 1920px; 
-            background: linear-gradient(145deg, #09090b 0%, #0f172a 100%); 
-            color: white; 
-            position: absolute; 
-            top: -9999px; 
-            left: -9999px; 
-            padding: 80px 100px; 
-            box-sizing: border-box; 
-            display: flex; 
-            flex-direction: column; 
-            font-family: 'Segoe UI', sans-serif; 
-            overflow: hidden; 
+            width: 1080px; height: 1920px; background: linear-gradient(145deg, #09090b 0%, #0f172a 100%); 
+            color: white; position: absolute; top: -9999px; left: -9999px; padding: 80px 100px; 
+            box-sizing: border-box; display: flex; flex-direction: column; font-family: 'Segoe UI', sans-serif; overflow: hidden; 
         }
         .story-bg-glow1 { position: absolute; top: -10%; left: -20%; width: 800px; height: 800px; background: rgba(239, 68, 68, 0.4); filter: blur(200px); border-radius: 50%; z-index: 0; }
         .story-bg-glow2 { position: absolute; bottom: -10%; right: -20%; width: 900px; height: 900px; background: rgba(14, 165, 233, 0.3); filter: blur(200px); border-radius: 50%; z-index: 0; }
-        
         .story-content { z-index: 1; position: relative; height: 100%; display: flex; flex-direction: column; }
         .story-header { text-align: center; margin-bottom: 50px; }
-        .story-title { font-size: 85px; font-weight: 900; background: linear-gradient(90deg, #ff4b4b, #fca5a5); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin: 0; letter-spacing: -1px;}
+        
+        .story-title { font-size: 90px; font-weight: 900; color: #ffffff; text-shadow: 0 4px 20px rgba(239, 68, 68, 0.8); margin: 0; letter-spacing: 2px;}
+        .story-title span { color: #ff4b4b; }
+        
         .story-date { font-size: 30px; color: #cbd5e1; margin-top: 20px; font-weight: 500; }
         
         .story-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 40px; }
@@ -190,16 +186,14 @@
         .story-stat-label { font-size: 26px; color: #94a3b8; text-transform: uppercase; letter-spacing: 2px; margin-top: 15px; font-weight: bold;}
         
         .story-lists { display: flex; gap: 30px; flex: 1; }
-        .story-list-box { flex: 1; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px; padding: 40px; backdrop-filter: blur(20px); display: flex; flex-direction: column;}
+        .story-list-box { flex: 1; background: rgba(255, 255, 255, 0.04); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 30px; padding: 40px; backdrop-filter: blur(20px); display: flex; flex-direction: column; overflow:hidden;}
         .story-list-box h2 { font-size: 36px; color: #f8fafc; margin-top: 0; margin-bottom: 30px; padding-bottom: 25px; border-bottom: 2px solid rgba(255,255,255,0.08); text-align: center; }
         .story-list-box h2 span { color: #ef4444; }
         .story-list-box.blue h2 span { color: #38bdf8; }
-        
         .story-item { font-size: 32px; margin-bottom: 25px; font-weight: 600; display: flex; align-items: center; color: #f1f5f9; }
         .story-item span.rank { color: #ef4444; font-weight: 900; font-size: 36px; width: 60px; flex-shrink: 0;}
         .story-list-box.blue .story-item span.rank { color: #38bdf8; }
         .story-item span.name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 320px; }
-        
         .story-footer { text-align: center; font-size: 26px; color: #64748b; margin-top: auto; padding-top: 30px; font-weight: 500;}
 
         @media (max-width: 600px) {
@@ -210,19 +204,21 @@
             .toolbar { justify-content: flex-start; }
             .header-top { justify-content: space-between; }
             .time-range-banner { flex-direction: column; align-items: stretch; text-align: center;}
+            
+            .data-table th, .data-table td { font-size: 13px; padding: 8px 10px; }
+            .video-link { word-break: break-word; display: block; max-width: 250px; white-space: normal; }
         }
     </style>
 </head>
 <body>
 
-<!-- Hidden Story Element for Export -->
 <div id="storyMaker" class="story-container">
     <div class="story-bg-glow1"></div>
     <div class="story-bg-glow2"></div>
     
     <div class="story-content">
         <div class="story-header">
-            <h1 class="story-title">YT Tracker</h1>
+            <h1 class="story-title"><span>YT</span> Tracker</h1>
             <div class="story-date" id="storyDateRange">-</div>
         </div>
         
@@ -254,7 +250,7 @@
         </div>
         
         <div class="story-footer">
-            Generated securely by YouTube History Tracker
+            Generated by youtube-history-tracker.vercel.app
         </div>
     </div>
 </div>
@@ -264,11 +260,11 @@
         <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Dark Mode</button>
         <div class="lang-selector">
             <select id="langSelect" onchange="changeLanguage()">
-                <option value="en" selected>EN English</option>
-                <option value="th">TH ภาษาไทย</option>
-                <option value="zh">CN 简体中文</option>
-                <option value="jp">JP 日本語</option>
-                <option value="es">ES Español</option>
+                <option value="en" selected>EN</option>
+                <option value="th">TH</option>
+                <option value="zh">CN</option>
+                <option value="jp">JP</option>
+                <option value="es">ES</option>
             </select>
         </div>
     </div>
@@ -276,7 +272,7 @@
     <h1 id="mainTitle">📊 YouTube History Tracker</h1>
     
     <div class="instructions" id="instructionBox">
-        <h3 id="instTitle">📝 How to get Data (Fastest Method)</h3>
+        <h3 id="instTitle">📝 How to get Data (100% Safe Method)</h3>
         <ol>
             <li id="inst1">Go to <a href="https://takeout.google.com/" target="_blank">Google Takeout</a></li>
             <li id="inst2">Click "Deselect all", check only <b>YouTube and YouTube Music</b></li>
@@ -291,9 +287,9 @@
     </div>
 
     <div class="upload-section">
-        <h3 id="uploadTitle" style="margin-top:0;">Upload Files (Select multiple files at once)</h3>
+        <h3 id="uploadTitle" style="margin-top:0;">Upload Files</h3>
         <input type="file" id="fileInput" accept=".json, .html, .csv" multiple>
-        <div class="upload-hint" id="uploadHint">Supports watch-history.json (all parts) and Comments (.csv)</div>
+        <div class="upload-hint" id="uploadHint">Select all files together: watch-history.json and Comments (.csv)</div>
     </div>
 
     <div class="loading-box" id="loadingBox">⏳ Processing your data... Please wait</div>
@@ -316,25 +312,26 @@
             <div class="stat-card"><h3 id="statVideoText">Unique Videos</h3><h2 id="uniqueVideos">0</h2></div>
         </div>
 
-        <div class="controls" id="controls" style="display:none;">
-            <span id="perPageText" style="font-weight: bold; margin-right: 10px;">Items per page:</span>
-            <button class="btn active" onclick="setItemsPerPage(10, this)">10</button>
-            <button class="btn" onclick="setItemsPerPage(50, this)">50</button>
-            <button class="btn" onclick="setItemsPerPage(100, this)">100</button>
-        </div>
-
         <div class="chart-wrapper" id="channelChartContainer" style="display:none;">
             <div class="chart-header">
                 <h3 id="channelTitle">Top Watched Channels</h3>
             </div>
             <div class="chart-hint" id="channelHint">(Click bar or name to open channel)</div>
+            
             <div class="chart-box" id="channelCanvasBox"><canvas id="topChannelsChart"></canvas></div>
+            
             <div class="pagination">
                 <button class="page-btn trans-prev" id="cPrevBtn" onclick="changeChannelPage(-1)">&laquo; Prev</button>
                 <span class="page-info"><span class="trans-page">Page</span> <span id="cCurrentPage" style="font-weight:bold;">1</span> <span class="trans-from">of</span> <span id="cTotalPages" style="font-weight:bold;">1</span></span>
                 <input type="number" class="page-input" id="cPageInput" min="1" value="1">
                 <button class="page-btn trans-go" onclick="jumpToChannelPage()">Go</button>
                 <button class="page-btn trans-next" id="cNextBtn" onclick="changeChannelPage(1)">Next &raquo;</button>
+            </div>
+            <div class="controls-inline">
+                <span class="perPageText">Items per page:</span>
+                <button class="btn active" onclick="setChannelItems(10, this)">10</button>
+                <button class="btn" onclick="setChannelItems(50, this)">50</button>
+                <button class="btn" onclick="setChannelItems(100, this)">100</button>
             </div>
         </div>
         
@@ -371,6 +368,12 @@
                 <button class="page-btn trans-go" onclick="jumpToVideoPage()">Go</button>
                 <button class="page-btn trans-next" id="vNextBtn" onclick="changeVideoPage(1)">Next &raquo;</button>
             </div>
+            <div class="controls-inline">
+                <span class="perPageText">Items per page:</span>
+                <button class="btn active" onclick="setVideoItems(10, this)">10</button>
+                <button class="btn" onclick="setVideoItems(50, this)">50</button>
+                <button class="btn" onclick="setVideoItems(100, this)">100</button>
+            </div>
         </div>
     </div>
 
@@ -392,14 +395,17 @@
         </div>
     </div>
 
-    <!-- Footer: Support & Feedback Section -->
     <div class="footer-section">
         <div class="support-box">
             <h3 id="supportTitle">☕ Support the Developer</h3>
-            <p id="supportDesc" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">If you find this tool helpful, consider buying me a coffee!</p>
+            <p id="supportDesc" style="color: var(--text-muted); font-size: 14px; margin-bottom: 20px;">If you find this website helpful, consider buying me some cat food.</p>
             <div class="donation-buttons">
-                <a href="https://buymeacoffee.com/ppjack" target="_blank" class="btn-donate">☕ Anything for lazy people</a>
-                <button class="btn-promptpay" onclick="openPromptPay()" id="promptpayBtn" style="display:none;">🇹🇭 For Thai (PromptPay)</button>
+                <a href="https://buymeacoffee.com/ppjack" target="_blank" class="btn-donate" id="btnDonate">🐱 Feed my cats</a>
+                
+                <div class="thai-support-zone" id="thaiSupportZone">
+                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 0; margin-bottom: 10px;" id="supportThaiDesc">🇹🇭 For Thai Users:</p>
+                    <button class="btn-promptpay" onclick="openPromptPay()" id="promptpayBtn">PromptPay Donation</button>
+                </div>
             </div>
         </div>
         
@@ -421,7 +427,6 @@
     </div>
 </div>
 
-<!-- Modal: PromptPay -->
 <div class="modal-overlay" id="qrModal" onclick="closePromptPay(event)">
     <div class="modal-content" onclick="event.stopPropagation()">
         <button class="close-modal" onclick="closePromptPay(true)">&times;</button>
@@ -431,7 +436,6 @@
     </div>
 </div>
 
-<!-- Modal: Story Share -->
 <div class="modal-overlay" id="storyModal" onclick="closeStory(event)">
     <div class="modal-content" style="width: auto; background: transparent; box-shadow: none;" onclick="event.stopPropagation()">
         <button class="close-modal" style="color:white; right: 0; top: -30px;" onclick="closeStory(true)">&times;</button>
@@ -442,7 +446,6 @@
     </div>
 </div>
 
-<!-- Formspree Scripts -->
 <script>
     window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
     formspree('initForm', { formElement: '#feedback-form', formId: 'xkoaeove' });
@@ -490,20 +493,20 @@
         en: {
             title: "📊 YouTube History Tracker",
             privacy: "🕵️‍♂️ Not going to steal your data (No money for server anyway). 100% runs in your browser.",
-            instTitle: "📝 How to get Data (Fastest Method)",
+            instTitle: "📝 How to get Data (100% Safe Method)",
             inst1: 'Go to <a href="https://takeout.google.com/" target="_blank">Google Takeout</a>',
             inst2: 'Click "Deselect all", check only <b>YouTube and YouTube Music</b>',
             inst3: 'Click the <span class="highlight-text">All YouTube data included</span> button.',
             inst4: '<b>Important!</b> Uncheck everything EXCEPT <span class="highlight-text">"History"</span> and <span class="highlight-text">"Comments"</span>.',
             inst5: 'Click "Multiple formats" and change History format to <b>JSON</b>.',
             inst6: 'Click "Next step" -> "Export". You will get <code>watch-history.json</code> and a comments file (<code>.csv</code>). Upload both here.',
-            uploadBox: "Upload Files (Select multiple files at once)",
-            uploadHint: "Supports watch-history.json (all parts) and Comments (.csv)",
+            uploadBox: "Upload Files",
+            uploadHint: "Select all files together: watch-history.json and Comments (.csv)",
             loading: "⏳ Processing your data...",
             statTotal: "Total Views",
             statChannels: "Channels Watched",
             statUnique: "Unique Videos",
-            perPage: "Items per page:",
+            perPageText: "Items per page:",
             chartChannelTitle: "Top Watched Channels",
             chartVideoTitle: "Video History",
             hintChannel: "(Click bar or name to open channel)",
@@ -530,7 +533,8 @@
             thVidViews: "Views",
             thVidDate: "Date Viewed",
             supportTitle: "☕ Support the Developer",
-            supportDesc: "If you find this tool helpful, consider buying me a coffee!",
+            supportDesc: "If you find this website helpful, consider buying me some cat food.",
+            supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 Send Feedback",
             feedbackDesc: "Have an idea or found a bug? Send me a private message.",
             fbEmail: "Your Email (Optional)",
@@ -540,27 +544,28 @@
             shareBtn: "📸 Wanna share?",
             stTopChan: "🏆 Top <span>Channels</span>",
             stTopVid: "🔥 Top <span>Videos</span>",
+            donateBtnText: "🐱 Feed my cats",
             locale: "en-US",
             showPromptPay: false,
-            promptpayText: "🇹🇭 For Thai (PromptPay)"
+            promptpayText: "PromptPay Donation"
         },
         th: {
             title: "📊 YouTube History Tracker",
-            privacy: "🕵️‍♂️ ข้อมูลไม่ถูกอัปโหลดขึ้นเซิร์ฟเวอร์ ไม่มีแมวขโมยแน่นอน (ไม่มีเงินเช่าเซิร์ฟเวอร์) ประมวลผลในเบราว์เซอร์เท่านั้น",
-            instTitle: "📝 วิธีขอไฟล์ข้อมูลจาก Google (ให้โหลดเสร็จไวที่สุด)",
+            privacy: "🕵️‍♂️ ข้อมูลไม่ถูกอัปโหลดขึ้นเซิร์ฟเวอร์ ไม่มีแมวขโมยแน่นอน (เพราะไม่มีเงินเช่าเซิร์ฟเวอร์) ประมวลผลในเบราว์เซอร์เท่านั้น",
+            instTitle: "📝 วิธีขอไฟล์ข้อมูลจาก Google (ปลอดภัย 100%)",
             inst1: 'ไปที่เว็บไซต์ <a href="https://takeout.google.com/" target="_blank">Google Takeout</a>',
             inst2: 'คลิก "ยกเลิกการเลือกทั้งหมด" แล้วเลื่อนลงมาติ๊กถูกเฉพาะ <b>YouTube and YouTube Music</b>',
             inst3: 'คลิกที่ปุ่ม <span class="highlight-text">รวมข้อมูล YouTube ทั้งหมด</span>',
             inst4: '<b>สำคัญ!</b> เอาติ๊กถูกออกให้หมด เหลือไว้แค่ <span class="highlight-text">"ประวัติ"</span> และ <span class="highlight-text">"ความคิดเห็น"</span>',
             inst5: 'ตรงปุ่ม "รูปแบบหลายรูปแบบ" ให้เปลี่ยนรูปแบบ ประวัติ เป็น <b>JSON</b> และกดตกลง',
             inst6: 'คลิก "ขั้นตอนถัดไป" -> "ส่งออก" จะได้ไฟล์ <code>watch-history.json</code> และไฟล์ <code>.csv</code> ให้นำมาอัปโหลดที่นี่',
-            uploadBox: "อัปโหลดไฟล์ (เลือกไฟล์พร้อมกันได้มากกว่า 1 ไฟล์)",
-            uploadHint: "ลากไฟล์ประวัติการดูทั้งหมด (.json) และไฟล์ความคิดเห็น (.csv) มาใส่พร้อมกันได้เลย",
+            uploadBox: "อัปโหลดไฟล์",
+            uploadHint: "เลือกไฟล์พร้อมกันได้มากกว่า 1 ไฟล์: ไฟล์ประวัติการดู (.json) และไฟล์ความคิดเห็น (.csv)",
             loading: "⏳ กำลังคำนวณและประมวลผลข้อมูล... กรุณารอสักครู่",
             statTotal: "วิดีโอที่ดูทั้งหมด",
             statChannels: "ช่องที่ติดตามดู",
             statUnique: "วิดีโอที่ไม่ซ้ำกัน",
-            perPage: "แสดงผลหน้าละ:",
+            perPageText: "แสดงผลหน้าละ:",
             chartChannelTitle: "ช่องที่ดูบ่อยที่สุด",
             chartVideoTitle: "ประวัติวิดีโอ",
             hintChannel: "(คลิกที่แท่งกราฟ หรือ ชื่อช่อง เพื่อเปิดลิงก์)",
@@ -587,7 +592,8 @@
             thVidViews: "จำนวนดู",
             thVidDate: "วันที่เข้าชม",
             supportTitle: "☕ สนับสนุนผู้พัฒนา",
-            supportDesc: "หากเว็บนี้มีประโยชน์ ช่วยสนับสนุนเป็นค่ากาแฟเล็กๆ น้อยๆ ได้นะครับ!",
+            supportDesc: "หากเว็บนี้มีประโยชน์ ช่วยสนับสนุนค่าอาหารแมวให้ผมหน่อยนะครับ 🐈",
+            supportThaiDesc: "🇹🇭 สำหรับคนไทย:",
             feedbackTitle: "📝 แนะนำติชม (ส่งตรงถึงผู้พัฒนา)",
             feedbackDesc: "อยากให้เพิ่มอะไร หรือเจอบัคตรงไหน พิมพ์ส่งข้อความหาผมได้เลยครับ",
             fbEmail: "อีเมลของคุณ (ใส่หรือไม่ใส่ก็ได้)",
@@ -597,27 +603,28 @@
             shareBtn: "📸 Wanna share?",
             stTopChan: "🏆 ช่องที่ดูบ่อย <span>ที่สุด</span>",
             stTopVid: "🔥 วิดีโอที่ดูซ้ำ <span>ที่สุด</span>",
+            donateBtnText: "🐱 เลี้ยงอาหารแมว",
             locale: "th-TH",
             showPromptPay: true,
-            promptpayText: "🇹🇭 โดเนทผ่านพร้อมเพย์"
+            promptpayText: "โดเนทผ่านพร้อมเพย์"
         },
         zh: {
             title: "📊 YouTube History Tracker",
             privacy: "🕵️‍♂️ 绝对不会偷你的数据（反正也没钱买服务器）。100%在您的浏览器中运行。",
-            instTitle: "📝 如何获取数据（最快方法）",
+            instTitle: "📝 如何获取数据（100%安全方法）",
             inst1: '访问 <a href="https://takeout.google.com/" target="_blank">Google Takeout</a>',
             inst2: '点击“取消全选”，仅勾选 <b>YouTube 和 YouTube Music</b>',
             inst3: '点击 <span class="highlight-text">包含的所有 YouTube 数据</span> 按钮。',
             inst4: '<b>重要！</b> 取消勾选所有选项，只保留 <span class="highlight-text">"历史记录"</span> 和 <span class="highlight-text">"评论"</span>。',
             inst5: '点击“多种格式”，将历史记录格式更改为 <b>JSON</b>。',
             inst6: '滑动到底部点击“下一步” -> “导出”。上传您的文件。',
-            uploadBox: "上传文件（可同时选择多个文件）",
-            uploadHint: "支持 watch-history.json 和评论文件 (.csv)",
+            uploadBox: "上传文件",
+            uploadHint: "同时选择所有文件：watch-history.json 和评论文件 (.csv)",
             loading: "⏳ 正在处理数据...",
             statTotal: "总观看次数",
             statChannels: "关注频道数",
             statUnique: "不重复视频",
-            perPage: "每页显示：",
+            perPageText: "每页显示：",
             chartChannelTitle: "最常观看频道",
             chartVideoTitle: "视频历史",
             hintChannel: "(点击柱状图或名称打开频道)",
@@ -645,6 +652,7 @@
             thVidDate: "观看日期",
             supportTitle: "☕ 支持开发者",
             supportDesc: "如果这个工具有帮助，请考虑请我喝杯咖啡！",
+            supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 发送反馈",
             feedbackDesc: "有新想法或发现错误？请给我发私信。",
             fbEmail: "您的邮箱（选填）",
@@ -654,14 +662,15 @@
             shareBtn: "📸 Wanna share?",
             stTopChan: "🏆 Top <span>Channels</span>",
             stTopVid: "🔥 Top <span>Videos</span>",
+            donateBtnText: "🐱 Feed my cats",
             locale: "zh-CN",
             showPromptPay: false,
-            promptpayText: "🇹🇭 For Thai (PromptPay)"
+            promptpayText: "PromptPay Donation"
         },
         jp: {
             title: "📊 YouTube History Tracker",
             privacy: "🕵️‍♂️ あなたのデータは盗みません（サーバー代もないので）。すべてブラウザ内で完結します。",
-            instTitle: "📝 データの取得方法（最速）",
+            instTitle: "📝 データの取得方法（100%安全な方法）",
             inst1: '<a href="https://takeout.google.com/" target="_blank">Google Takeout</a> にアクセス',
             inst2: '「選択をすべて解除」をクリックし、<b>YouTube</b> のみを選択',
             inst3: '<span class="highlight-text">含まれるすべての YouTube データ</span> をクリック。',
@@ -674,7 +683,7 @@
             statTotal: "総再生回数",
             statChannels: "視聴したチャンネル",
             statUnique: "ユニークな動画数",
-            perPage: "表示数:",
+            perPageText: "表示数:",
             chartChannelTitle: "よく見るチャンネル",
             chartVideoTitle: "動画の履歴",
             hintChannel: "(バーまたは名前をクリックしてチャンネルを開く)",
@@ -702,6 +711,7 @@
             thVidDate: "視聴日",
             supportTitle: "☕ 開発者を支援",
             supportDesc: "役立った場合は、コーヒーをおごってください！",
+            supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 フィードバック",
             feedbackDesc: "アイデアやバグを見つけましたか？メッセージを送ってください。",
             fbEmail: "メール (任意)",
@@ -711,14 +721,15 @@
             shareBtn: "📸 Wanna share?",
             stTopChan: "🏆 Top <span>Channels</span>",
             stTopVid: "🔥 Top <span>Videos</span>",
+            donateBtnText: "🐱 Feed my cats",
             locale: "ja-JP",
             showPromptPay: false,
-            promptpayText: "🇹🇭 For Thai (PromptPay)"
+            promptpayText: "PromptPay Donation"
         },
         es: {
             title: "📊 YouTube History Tracker",
-            privacy: "🕵️‍♂️ No robaremos tus datos (no hay dinero para servidor de todos modos). Funciona en tu navegador.",
-            instTitle: "📝 Cómo obtener datos (Método más rápido)",
+            privacy: "🕵️‍♂️ No robaremos tus datos (no hay dinero para servidor). Funciona en tu navegador.",
+            instTitle: "📝 Cómo obtener datos (Método 100% Seguro)",
             inst1: 'Ve a <a href="https://takeout.google.com/" target="_blank">Google Takeout</a>',
             inst2: 'Desmarcar todo, luego selecciona solo <b>YouTube</b>',
             inst3: 'Haz clic en <span class="highlight-text">Todos los datos incluidos</span>.',
@@ -731,7 +742,7 @@
             statTotal: "Vistas Totales",
             statChannels: "Canales Vistos",
             statUnique: "Videos Únicos",
-            perPage: "Elementos:",
+            perPageText: "Elementos:",
             chartChannelTitle: "Canales Más Vistos",
             chartVideoTitle: "Historial de Videos",
             hintChannel: "(Haz clic en la barra o nombre para abrir)",
@@ -759,6 +770,7 @@
             thVidDate: "Fecha",
             supportTitle: "☕ Apoya al Desarrollador",
             supportDesc: "¡Si esto te fue útil, invítame un café!",
+            supportThaiDesc: "🇹🇭 For Thai Users:",
             feedbackTitle: "📝 Comentarios",
             feedbackDesc: "¿Tienes una idea o encontraste un error? Envíame un mensaje.",
             fbEmail: "Tu Correo (Opcional)",
@@ -768,9 +780,10 @@
             shareBtn: "📸 Wanna share?",
             stTopChan: "🏆 Top <span>Channels</span>",
             stTopVid: "🔥 Top <span>Videos</span>",
+            donateBtnText: "🐱 Feed my cats",
             locale: "es-ES",
             showPromptPay: false,
-            promptpayText: "🇹🇭 For Thai (PromptPay)"
+            promptpayText: "PromptPay Donation"
         }
     };
 
@@ -796,7 +809,9 @@
         document.getElementById('stViewsLabel').innerText = d.statTotal;
         document.getElementById('stVideosLabel').innerText = d.statUnique;
         document.getElementById('stChannelsLabel').innerText = d.statChannels;
-        document.getElementById('perPageText').innerText = d.perPage;
+        
+        document.querySelectorAll('.perPageText').forEach(el => el.innerText = d.perPageText);
+        
         document.getElementById('channelHint').innerText = d.hintChannel;
         document.getElementById('videoHint').innerText = d.hintVideo;
         document.getElementById('tabHistBtn').innerText = d.tabHistory;
@@ -815,6 +830,8 @@
 
         document.getElementById('supportTitle').innerText = d.supportTitle;
         document.getElementById('supportDesc').innerText = d.supportDesc;
+        document.getElementById('supportThaiDesc').innerText = d.supportThaiDesc;
+        document.getElementById('btnDonate').innerText = d.donateBtnText;
         document.getElementById('feedbackTitle').innerText = d.feedbackTitle;
         document.getElementById('feedbackDesc').innerText = d.feedbackDesc;
         document.getElementById('fbEmail').placeholder = d.fbEmail;
@@ -835,7 +852,8 @@
             document.getElementById('modalDescText').innerText = "Scan with any Thai mobile banking app";
         }
         
-        document.getElementById('promptpayBtn').style.display = d.showPromptPay ? 'inline-block' : 'none';
+        // Show/Hide Thai Zone based on language setup
+        document.getElementById('thaiSupportZone').style.display = d.showPromptPay ? 'block' : 'none';
         
         document.querySelectorAll('.trans-prev').forEach(el => el.innerText = d.prev);
         document.querySelectorAll('.trans-next').forEach(el => el.innerText = d.next);
@@ -864,7 +882,7 @@
     }
 
     function extractVideoID(url) {
-        if (!url) return null;
+        if (!url || typeof url !== 'string') return null;
         let match = url.match(/(?:v=|youtu\.be\/|shorts\/|embed\/)([^&/?]+)/);
         return match ? match[1] : null;
     }
@@ -879,7 +897,7 @@
     let globalMaxChannels = 0, globalMaxVideos = 0;
     let globalOldestDate = null, globalNewestDate = null;
     let videoViewMode = 'chart'; 
-    let itemsPerPage = 10, itemsPerCommentPage = 20;
+    let cItemsPerPage = 10, vItemsPerPage = 10, itemsPerCommentPage = 20;
     let cPage = 1, vPage = 1, cmtPage = 1;
     let cTotalPages = 1, vTotalPages = 1, cmtTotalPages = 1;
 
@@ -898,6 +916,7 @@
         globalOldestDate = null; globalNewestDate = null;
         let hasHistory = false, hasComments = false;
 
+        // Process .json files first
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             if (file.name.includes('.json')) {
@@ -906,6 +925,7 @@
             }
         }
         
+        // Process .csv / .html files next
         for (let i = 0; i < files.length; i++) {
             const file = files[i];
             const text = await file.text();
@@ -940,10 +960,18 @@
             if (isAd) return; 
             
             totalViewsAccumulated++;
-            let title = (item.title && typeof item.title === 'string') ? item.title : "Unknown Video";
-            let cleanTitle = title.replace(prefixRegex, '').trim(); 
+            let rawTitle = (item.title && typeof item.title === 'string') ? item.title : "Unknown Video";
+            let cleanTitle = rawTitle.replace(prefixRegex, '').trim(); 
             let vUrl = item.titleUrl || null;
             
+            if (cleanTitle.startsWith("http")) {
+                if (!vUrl || vUrl === "null") vUrl = cleanTitle; 
+                let extId = extractVideoID(cleanTitle);
+                cleanTitle = extId ? "Video ID: " + extId : cleanTitle;
+            }
+            cleanTitle = cleanTitle.replace(/^"|"$/g, '').trim();
+            if (vUrl === "null") vUrl = null;
+
             let vidId = extractVideoID(vUrl);
             if (vidId) urlToTitleMap[vidId] = cleanTitle;
 
@@ -969,6 +997,8 @@
             if (Array.isArray(item.subtitles) && item.subtitles.length > 0) {
                 let channelName = item.subtitles[0].name || "Unknown Channel";
                 let cUrl = item.subtitles[0].url || null;
+                if (cUrl === "null") cUrl = null;
+
                 if(!channelsDataMap[channelName]) { 
                     channelsDataMap[channelName] = { count: 0, url: cUrl }; 
                 } else {
@@ -983,11 +1013,16 @@
         allSortedChannels = Object.entries(channelsDataMap).sort((a, b) => b[1].count - a[1].count);
         originalAllVideos = Object.entries(videosDataMap);
         globalMaxChannels = allSortedChannels.length > 0 ? allSortedChannels[0][1].count : 10;
-        changeVideoSort(true); 
+        
         document.getElementById('totalViews').innerText = totalViewsAccumulated.toLocaleString();
         document.getElementById('totalChannels').innerText = allSortedChannels.length.toLocaleString();
         document.getElementById('uniqueVideos').innerText = originalAllVideos.length.toLocaleString();
-        setItemsPerPage(itemsPerPage, document.querySelector('.controls .btn.active'));
+        
+        document.getElementById('statsGrid').style.display = 'flex';
+        
+        setChannelItems(cItemsPerPage, document.querySelector('#channelChartContainer .controls-inline .btn.active') || document.querySelector('#channelChartContainer .controls-inline .btn'));
+        changeVideoSort(true); 
+        setVideoItems(vItemsPerPage, document.querySelector('#videoChartContainer .controls-inline .btn.active') || document.querySelector('#videoChartContainer .controls-inline .btn'));
     }
 
     function changeVideoSort(skipUpdate = false) {
@@ -999,7 +1034,12 @@
 
         if (sortType === 'count' && sortedVideosForDisplay.length > 0) { globalMaxVideos = sortedVideosForDisplay[0][1].count; }
         vPage = 1;
-        if(!skipUpdate) { document.getElementById('vPageInput').value = 1; updateVideoDisplay(); }
+        if(!skipUpdate) { 
+            vTotalPages = Math.ceil(sortedVideosForDisplay.length / vItemsPerPage) || 1;
+            document.getElementById('vTotalPages').innerText = vTotalPages.toLocaleString();
+            document.getElementById('vPageInput').value = 1; 
+            updateVideoDisplay(); 
+        }
     }
 
     function toggleVideoView(view) {
@@ -1016,6 +1056,180 @@
             document.getElementById('videoTableView').style.display = 'block';
         }
         updateVideoDisplay();
+    }
+
+    // --- Hard Fix: Accurate Chart Click ---
+    const handleChartClick = (e, elements, chart, dataSlice) => {
+        let index = -1;
+        
+        // 1. ตรวจสอบการกดบนตัวแท่งกราฟโดยตรง
+        const barElements = chart.getElementsAtEventForMode(e, 'index', { intersect: true }, false);
+        if (barElements.length > 0) { 
+            index = barElements[0].index; 
+        } 
+        // 2. ตรวจสอบการกดบนชื่อแกน Y (ใช้ Math.round ช่วยล็อคเป้าให้แม่นยำ)
+        else if (chart.scales.y) {
+            const yAxis = chart.scales.y;
+            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) {
+                index = Math.round(yAxis.getValueForPixel(e.y));
+            }
+        }
+        
+        if (index >= 0 && index < dataSlice.length) {
+            let url = dataSlice[index][1].url;
+            if (!url && dataSlice[index][0].startsWith("Video ID: ")) {
+                url = "https://www.youtube.com/watch?v=" + dataSlice[index][0].replace("Video ID: ", "");
+            }
+            if(url && url !== "null") {
+                window.open(url, '_blank');
+            }
+        }
+    };
+    
+    const handleChartHover = (e, elements, chart) => {
+        let isPointer = elements.length > 0;
+        if (!isPointer && chart.scales.y) {
+            const yAxis = chart.scales.y;
+            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) isPointer = true;
+        }
+        e.native.target.style.cursor = isPointer ? 'pointer' : 'default';
+    };
+
+    function setChannelItems(limit, btnElement) {
+        if(!btnElement) return;
+        document.querySelectorAll('#channelChartContainer .controls-inline .btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        cItemsPerPage = limit; cPage = 1; 
+        cTotalPages = Math.ceil(allSortedChannels.length / cItemsPerPage) || 1;
+        document.getElementById('cTotalPages').innerText = cTotalPages.toLocaleString();
+        updateChannelDisplay();
+    }
+    function changeChannelPage(dir) { let newP = cPage + dir; if (newP >= 1 && newP <= cTotalPages) { cPage = newP; updateChannelDisplay(); } }
+    function jumpToChannelPage() { let v = parseInt(document.getElementById('cPageInput').value); if (!isNaN(v) && v >= 1 && v <= cTotalPages) { cPage = v; updateChannelDisplay(); } else { document.getElementById('cPageInput').value = cPage; } }
+    
+    function updateChannelDisplay() {
+        document.getElementById('cCurrentPage').innerText = cPage.toLocaleString();
+        document.getElementById('cPageInput').value = cPage;
+        document.getElementById('cPrevBtn').disabled = (cPage === 1);
+        document.getElementById('cNextBtn').disabled = (cPage === cTotalPages);
+        const start = (cPage - 1) * cItemsPerPage;
+        const dataSlice = allSortedChannels.slice(start, start + cItemsPerPage);
+        const d = dict[currentLang];
+        document.getElementById('channelChartContainer').style.display = 'block';
+        document.getElementById('channelTitle').innerText = `${d.chartChannelTitle} (${d.rankText} ${start + 1} - ${start + dataSlice.length})`;
+        renderChannelChart(dataSlice);
+    }
+
+    function renderChannelChart(displayData) {
+        if(chart1) chart1.destroy();
+        document.getElementById('channelCanvasBox').style.height = Math.max(300, displayData.length * 35 + 50) + 'px';
+        const ctx = document.getElementById('topChannelsChart').getContext('2d');
+        const isDark = document.body.classList.contains('dark');
+        
+        let maxLen = window.innerWidth < 600 ? 25 : 40;
+
+        chart1 = new Chart(ctx, {
+            type: 'bar', 
+            data: { 
+                labels: displayData.map(i => i[0].length > maxLen ? i[0].substring(0,maxLen) + '...' : i[0]), 
+                datasets: [{ data: displayData.map(i => i[1].count), backgroundColor: isDark ? '#ef4444' : '#FF0000', borderRadius: 3 }] 
+            },
+            options: { 
+                indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
+                layout: { padding: { right: 40 } }, 
+                scales: { 
+                    x: { beginAtZero: true, suggestedMax: globalMaxChannels, ticks: { stepSize: 1 } },
+                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
+                }, 
+                plugins: { 
+                    legend: { display: false },
+                    datalabels: { anchor: 'end', align: 'right', color: isDark ? '#f8fafc' : '#334155', font: { weight: 'bold' } }
+                }, 
+                onHover: (e, el, chart) => handleChartHover(e, el, chart), 
+                onClick: (e, el, chart) => handleChartClick(e, el, chart, displayData) 
+            }
+        });
+    }
+
+    function setVideoItems(limit, btnElement) {
+        if(!btnElement) return;
+        document.querySelectorAll('#videoChartContainer .controls-inline .btn').forEach(b => b.classList.remove('active'));
+        btnElement.classList.add('active');
+        vItemsPerPage = limit; vPage = 1; 
+        vTotalPages = Math.ceil(sortedVideosForDisplay.length / vItemsPerPage) || 1;
+        document.getElementById('vTotalPages').innerText = vTotalPages.toLocaleString();
+        updateVideoDisplay();
+    }
+    function changeVideoPage(dir) { let newP = vPage + dir; if (newP >= 1 && newP <= vTotalPages) { vPage = newP; updateVideoDisplay(); } }
+    function jumpToVideoPage() { let v = parseInt(document.getElementById('vPageInput').value); if (!isNaN(v) && v >= 1 && v <= vTotalPages) { vPage = v; updateVideoDisplay(); } else { document.getElementById('vPageInput').value = vPage; } }
+    
+    function updateVideoDisplay() {
+        document.getElementById('vCurrentPage').innerText = vPage.toLocaleString();
+        document.getElementById('vPageInput').value = vPage;
+        document.getElementById('vPrevBtn').disabled = (vPage === 1);
+        document.getElementById('vNextBtn').disabled = (vPage === vTotalPages);
+        const start = (vPage - 1) * vItemsPerPage;
+        const dataSlice = sortedVideosForDisplay.slice(start, start + vItemsPerPage);
+        const d = dict[currentLang];
+        document.getElementById('videoTitle').innerText = `${d.chartVideoTitle} (${d.rankText} ${start + 1} - ${start + dataSlice.length})`;
+        if(videoViewMode === 'chart') renderVideoChart(dataSlice);
+        else renderVideoTable(dataSlice, start);
+    }
+    
+    function renderVideoChart(displayData) {
+        if(chart2) chart2.destroy();
+        document.getElementById('videoCanvasBox').style.height = Math.max(300, displayData.length * 35 + 50) + 'px';
+        const ctx = document.getElementById('topVideosChart').getContext('2d');
+        const isDark = document.body.classList.contains('dark');
+        
+        let maxLen = window.innerWidth < 600 ? 25 : 45;
+
+        chart2 = new Chart(ctx, {
+            type: 'bar', 
+            data: { 
+                labels: displayData.map(i => i[0].length > maxLen ? i[0].substring(0,maxLen) + '...' : i[0]), 
+                datasets: [{ data: displayData.map(i => i[1].count), backgroundColor: isDark ? '#94a3b8' : '#1e293b', borderRadius: 3 }] 
+            },
+            options: { 
+                indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
+                layout: { padding: { right: 40 } },
+                scales: { 
+                    x: { beginAtZero: true, suggestedMax: globalMaxVideos, ticks: { stepSize: 1 } },
+                    y: { ticks: { align: 'start', crossAlign: 'near', font: { size: window.innerWidth < 600 ? 11 : 12 } } }
+                }, 
+                plugins: { 
+                    legend: { display: false },
+                    datalabels: { anchor: 'end', align: 'right', color: isDark ? '#f8fafc' : '#334155', font: { weight: 'bold' } }
+                }, 
+                onHover: (e, el, chart) => handleChartHover(e, el, chart), 
+                onClick: (e, el, chart) => handleChartClick(e, el, chart, displayData) 
+            }
+        });
+    }
+    
+    function renderVideoTable(displayData, startIndex) {
+        const tbody = document.getElementById('videoTableBody');
+        tbody.innerHTML = '';
+        displayData.forEach((item, index) => {
+            const tr = document.createElement('tr');
+            let url = item[1].url;
+            if (!url && item[0].startsWith("Video ID: ")) url = "https://www.youtube.com/watch?v=" + item[0].replace("Video ID: ", "");
+
+            let titleHTML = (url && url !== "null") ? `<a href="${url}" target="_blank" class="video-link">${item[0]}</a>` : item[0];
+            let d1 = formatDate(item[1].firstView);
+            let d2 = formatDate(item[1].lastView);
+            let dateHTML = "";
+            if (d1 === d2) dateHTML = `<span class="badge">${d1}</span>`;
+            else dateHTML = `<span class="badge">${d1}</span> <br><span style="font-size:11px; color:var(--text-muted);">${dict[currentLang].timeRangeMid}</span><br> <span class="badge">${d2}</span>`;
+
+            tr.innerHTML = `
+                <td style="text-align:center; font-weight:bold; color:var(--text-muted);">${startIndex + index + 1}</td>
+                <td>${titleHTML}</td>
+                <td style="text-align:center;"><strong style="font-size:16px;">${item[1].count.toLocaleString()}</strong></td>
+                <td style="text-align:center; white-space:nowrap;">${dateHTML}</td>
+            `;
+            tbody.appendChild(tr);
+        });
     }
 
     function processCommentsCSV(csvText) {
@@ -1036,29 +1250,45 @@
         for(let i=1; i<rows.length; i++) {
             let row = rows[i]; if(!row || row.length === 0) continue;
             let url = "", text = "", textColIndex = -1;
-            for(let j=0; j<row.length; j++) { let c = row[j]; if (c && (c.trim().startsWith("{") || c.trim().startsWith("[")) && c.includes('"text"')) { text = c.trim(); textColIndex = j; break; } }
+            
+            for(let j=0; j<row.length; j++) { 
+                let c = row[j]; 
+                if (c && (c.trim().startsWith("{") || c.trim().startsWith("[")) && c.includes('"text"')) { text = c.trim(); textColIndex = j; break; } 
+            }
+
             for(let j=0; j<row.length; j++) {
                 if (j === textColIndex) continue; 
                 let c = row[j]; if (!c) continue; c = c.trim();
                 if ((c.startsWith("http://") || c.startsWith("https://")) && c.includes("youtu")) { url = c; break; } 
                 else if (c.length === 11 && /^[a-zA-Z0-9_-]{11}$/.test(c)) { url = "https://www.youtube.com/watch?v=" + c; break; }
             }
+
+            if (text.startsWith('{') || text.startsWith('[')) {
+                let extractedUrl = "";
+                let extractedText = "";
+
+                if (text.startsWith('{') && text.endsWith('}') && text.includes('},{')) text = '[' + text + ']';
+
+                let vidMatch = text.match(/"externalVideoId"\s*:\s*"([^"]+)"/);
+                if (vidMatch && vidMatch[1]) extractedUrl = "https://www.youtube.com/watch?v=" + vidMatch[1];
+
+                let textChunks = [];
+                let textRegex = /"text"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g;
+                let match;
+                while ((match = textRegex.exec(text)) !== null) { textChunks.push(match[1]); }
+                if (textChunks.length > 0) {
+                    extractedText = textChunks.join('').replace(/\\n/g, '\n').replace(/\\"/g, '"');
+                } else {
+                    try { let j = JSON.parse(text); if (j.text) extractedText = j.text; } catch(e) {}
+                }
+
+                if (extractedUrl) url = extractedUrl;
+                if (extractedText) text = extractedText;
+            }
+
             if (!text) {
                 let candidates = row.filter((c, idx) => c && c !== url && !c.trim().startsWith("http") && !/^[a-zA-Z0-9_-]{11,30}$/.test(c.trim()));
                 text = candidates.length > 0 ? candidates.sort((a,b) => b.length - a.length)[0] : (row[row.length - 1] || "-");
-            }
-            if (text.startsWith('{') || text.startsWith('[')) {
-                try {
-                    if (text.startsWith('{') && text.endsWith('}') && text.includes('},{')) text = '[' + text + ']';
-                    let jsonObj = JSON.parse(text); 
-                    if (Array.isArray(jsonObj)) { text = jsonObj.map(seg => seg.text || "").join(""); } 
-                    else if (jsonObj.takeoutSegments) { text = jsonObj.takeoutSegments.map(s => s.text || "").join(""); } 
-                    else if (jsonObj.text) { text = jsonObj.text; }
-                } catch(e) {
-                    let extracted = []; let regex = /"text"\s*:\s*"([^"\\]*(?:\\.[^"\\]*)*)"/g; let match;
-                    while ((match = regex.exec(text)) !== null) { extracted.push(match[1]); }
-                    if (extracted.length > 0) text = extracted.join('');
-                }
             }
             
             let title = "Video Link";
@@ -1066,7 +1296,7 @@
                 let vidId = extractVideoID(url);
                 if(vidId) {
                     if (urlToTitleMap[vidId]) { title = urlToTitleMap[vidId]; } 
-                    else { title = "Video ID: " + vidId; }
+                    else { title = "Video ID: " + vidId; } // Removed (Not in History)
                 } 
             } else { url = ""; title = "Unknown Video"; }
             
@@ -1085,8 +1315,9 @@
                 const videoUrl = aTag.href;
                 
                 let vidId = extractVideoID(videoUrl);
-                if(vidId && urlToTitleMap[vidId]) {
-                    videoTitle = urlToTitleMap[vidId];
+                if(vidId) {
+                    if(urlToTitleMap[vidId]) videoTitle = urlToTitleMap[vidId];
+                    else videoTitle = "Video ID: " + vidId; // Removed (Not in History)
                 }
                 
                 let textContext = li.innerText, commentText = "-";
@@ -1108,144 +1339,6 @@
         }
     }
 
-    function setItemsPerPage(limit, btnElement) {
-        if(!btnElement) return;
-        document.querySelectorAll('.controls .btn').forEach(btn => btn.classList.remove('active'));
-        btnElement.classList.add('active');
-        itemsPerPage = limit; cPage = 1; vPage = 1;
-        cTotalPages = Math.ceil(allSortedChannels.length / itemsPerPage) || 1;
-        vTotalPages = Math.ceil(sortedVideosForDisplay.length / itemsPerPage) || 1;
-        document.getElementById('cTotalPages').innerText = cTotalPages.toLocaleString();
-        document.getElementById('vTotalPages').innerText = vTotalPages.toLocaleString();
-        document.getElementById('statsGrid').style.display = 'flex';
-        document.getElementById('controls').style.display = 'block';
-        updateChannelDisplay();
-        updateVideoDisplay();
-    }
-
-    function changeChannelPage(dir) { let newP = cPage + dir; if (newP >= 1 && newP <= cTotalPages) { cPage = newP; updateChannelDisplay(); } }
-    function jumpToChannelPage() { let v = parseInt(document.getElementById('cPageInput').value); if (!isNaN(v) && v >= 1 && v <= cTotalPages) { cPage = v; updateChannelDisplay(); } else { document.getElementById('cPageInput').value = cPage; } }
-    
-    function updateChannelDisplay() {
-        document.getElementById('cCurrentPage').innerText = cPage.toLocaleString();
-        document.getElementById('cPageInput').value = cPage;
-        document.getElementById('cPrevBtn').disabled = (cPage === 1);
-        document.getElementById('cNextBtn').disabled = (cPage === cTotalPages);
-        const start = (cPage - 1) * itemsPerPage;
-        const dataSlice = allSortedChannels.slice(start, start + itemsPerPage);
-        const d = dict[currentLang];
-        document.getElementById('channelChartContainer').style.display = 'block';
-        document.getElementById('channelTitle').innerText = `${d.chartChannelTitle} (${d.rankText} ${start + 1} - ${start + dataSlice.length})`;
-        renderChannelChart(dataSlice);
-    }
-    
-    const handleChartClick = (e, elements, chart, dataSlice) => {
-        let index = -1;
-        if (elements.length > 0) { index = elements[0].index; } 
-        else if (chart.scales.y) {
-            const yAxis = chart.scales.y;
-            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) {
-                index = yAxis.getValueForPixel(e.y);
-            }
-        }
-        if (index >= 0 && index < dataSlice.length) {
-            const url = dataSlice[index][1].url;
-            if(url && url !== "null") window.open(url, '_blank');
-        }
-    };
-    
-    const handleChartHover = (e, elements, chart) => {
-        let isPointer = elements.length > 0;
-        if (!isPointer && chart.scales.y) {
-            const yAxis = chart.scales.y;
-            if (e.x >= yAxis.left && e.x <= yAxis.right && e.y >= yAxis.top && e.y <= yAxis.bottom) isPointer = true;
-        }
-        e.native.target.style.cursor = isPointer ? 'pointer' : 'default';
-    };
-
-    function renderChannelChart(displayData) {
-        if(chart1) chart1.destroy();
-        document.getElementById('channelCanvasBox').style.height = Math.max(300, displayData.length * 35 + 50) + 'px';
-        const ctx = document.getElementById('topChannelsChart').getContext('2d');
-        const isDark = document.body.classList.contains('dark');
-        
-        chart1 = new Chart(ctx, {
-            type: 'bar', data: { labels: displayData.map(i => i[0]), datasets: [{ data: displayData.map(i => i[1].count), backgroundColor: isDark ? '#ef4444' : '#FF0000', borderRadius: 3 }] },
-            options: { 
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: 40 } }, 
-                scales: { x: { beginAtZero: true, suggestedMax: globalMaxChannels, ticks: { stepSize: 1 } } }, 
-                plugins: { 
-                    legend: { display: false },
-                    datalabels: { anchor: 'end', align: 'right', color: isDark ? '#f8fafc' : '#334155', font: { weight: 'bold' } }
-                }, 
-                onHover: (e, el, chart) => handleChartHover(e, el, chart), 
-                onClick: (e, el, chart) => handleChartClick(e, el, chart, displayData) 
-            }
-        });
-    }
-
-    function changeVideoPage(dir) { let newP = vPage + dir; if (newP >= 1 && newP <= vTotalPages) { vPage = newP; updateVideoDisplay(); } }
-    function jumpToVideoPage() { let v = parseInt(document.getElementById('vPageInput').value); if (!isNaN(v) && v >= 1 && v <= vTotalPages) { vPage = v; updateVideoDisplay(); } else { document.getElementById('vPageInput').value = vPage; } }
-    
-    function updateVideoDisplay() {
-        document.getElementById('vCurrentPage').innerText = vPage.toLocaleString();
-        document.getElementById('vPageInput').value = vPage;
-        document.getElementById('vPrevBtn').disabled = (vPage === 1);
-        document.getElementById('vNextBtn').disabled = (vPage === vTotalPages);
-        const start = (vPage - 1) * itemsPerPage;
-        const dataSlice = sortedVideosForDisplay.slice(start, start + itemsPerPage);
-        const d = dict[currentLang];
-        document.getElementById('videoTitle').innerText = `${d.chartVideoTitle} (${d.rankText} ${start + 1} - ${start + dataSlice.length})`;
-        if(videoViewMode === 'chart') renderVideoChart(dataSlice);
-        else renderVideoTable(dataSlice, start);
-    }
-    
-    function renderVideoChart(displayData) {
-        if(chart2) chart2.destroy();
-        document.getElementById('videoCanvasBox').style.height = Math.max(300, displayData.length * 35 + 50) + 'px';
-        const ctx = document.getElementById('topVideosChart').getContext('2d');
-        const isDark = document.body.classList.contains('dark');
-        
-        chart2 = new Chart(ctx, {
-            type: 'bar', data: { labels: displayData.map(i => i[0].length > 40 ? i[0].substring(0,40) + '...' : i[0]), datasets: [{ data: displayData.map(i => i[1].count), backgroundColor: isDark ? '#64748b' : '#1e293b', borderRadius: 3 }] },
-            options: { 
-                indexAxis: 'y', responsive: true, maintainAspectRatio: false, 
-                layout: { padding: { right: 40 } },
-                scales: { x: { beginAtZero: true, suggestedMax: globalMaxVideos, ticks: { stepSize: 1 } } }, 
-                plugins: { 
-                    legend: { display: false },
-                    datalabels: { anchor: 'end', align: 'right', color: isDark ? '#f8fafc' : '#334155', font: { weight: 'bold' } }
-                }, 
-                onHover: (e, el, chart) => handleChartHover(e, el, chart), 
-                onClick: (e, el, chart) => handleChartClick(e, el, chart, displayData) 
-            }
-        });
-    }
-    
-    function renderVideoTable(displayData, startIndex) {
-        const tbody = document.getElementById('videoTableBody');
-        tbody.innerHTML = '';
-        displayData.forEach((item, index) => {
-            const tr = document.createElement('tr');
-            let url = item[1].url;
-            let titleHTML = (url && url !== "null") ? `<a href="${url}" target="_blank" class="video-link">${item[0]}</a>` : item[0];
-            let d1 = formatDate(item[1].firstView);
-            let d2 = formatDate(item[1].lastView);
-            let dateHTML = "";
-            if (d1 === d2) dateHTML = `<span class="badge">${d1}</span>`;
-            else dateHTML = `<span class="badge">${d1}</span> <br><span style="font-size:11px; color:var(--text-muted);">${dict[currentLang].timeRangeMid}</span><br> <span class="badge">${d2}</span>`;
-
-            tr.innerHTML = `
-                <td style="text-align:center; font-weight:bold; color:var(--text-muted);">${startIndex + index + 1}</td>
-                <td>${titleHTML}</td>
-                <td style="text-align:center;"><strong style="font-size:16px;">${item[1].count.toLocaleString()}</strong></td>
-                <td style="text-align:center; white-space:nowrap;">${dateHTML}</td>
-            `;
-            tbody.appendChild(tr);
-        });
-    }
-
     function changeCommentPage(dir) { let newP = cmtPage + dir; if (newP >= 1 && newP <= cmtTotalPages) { cmtPage = newP; updateCommentDisplay(); } }
     function jumpToCommentPage() { let v = parseInt(document.getElementById('cmtPageInput').value); if (!isNaN(v) && v >= 1 && v <= cmtTotalPages) { cmtPage = v; updateCommentDisplay(); } else { document.getElementById('cmtPageInput').value = cmtPage; } }
     
@@ -1262,15 +1355,16 @@
 
         dataSlice.forEach(item => {
             const tr = document.createElement('tr');
+            
             const linkHTML = (item.url && item.url !== "null") 
                 ? `<a href="${item.url}" target="_blank" class="video-link">${item.title}</a>`
                 : `<span class="video-link" style="color:var(--text-muted); cursor:not-allowed;">${item.title}</span>`;
+            
             tr.innerHTML = `<td style="width: 30%;">${linkHTML}</td><td style="width: 70%;" class="comment-text">${item.text}</td>`;
             tbody.appendChild(tr);
         });
     }
 
-    // --- Story Generator Logic ---
     function generateStory() {
         if(totalViewsAccumulated === 0) return;
         
